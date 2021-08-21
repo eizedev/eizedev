@@ -2,6 +2,10 @@
 
 [![Eizedev's GitHub stats](https://github-readme-stats.vercel.app/api?username=eizedev&show_icons=true&theme=onedark)](https://github.com/eizedev/github-readme-stats)
 
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=eizedev)](https://github.com/eizedev/github-readme-stats)
+
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=eizedev&repo=AirConnect-Synology)](https://github.com/eizedev/github-readme-stats)
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=eizedev&repo=PasswordState-Management)](https://github.com/eizedev/github-readme-stats)
 
 <!--
 **eizedev/eizedev** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
