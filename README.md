@@ -7,7 +7,6 @@
 [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=eizedev&repo=AirConnect-Synology)](https://github.com/eizedev/airconnect-synology)
 [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=eizedev&repo=PSItems)](https://github.com/eizedev/PSItems)
 [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=eizedev&repo=PasswordState-Management)](https://github.com/eizedev/passwordstate-management)
-[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=eizedev&repo=New-World-Server-Status-Scraper-DE)](https://github.com/eizedev/New-World-Server-Status-Scraper-DE)
 
 ### Popular gists
 
