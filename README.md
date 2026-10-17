@@ -1,8 +1,11 @@
 <div align="center">
 
-# Hi, I'm René 👋
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="logo/svg/wordmark-on-dark.svg">
+  <img alt="eizedev" src="logo/svg/wordmark-on-light.svg" height="64">
+</picture>
 
-**Automation, self-hosting & PowerShell — on macOS, Linux and Synology.**
+Hi, I'm **René** — **automation, self-hosting & PowerShell on macOS, Linux and Synology.**
 I build the small tools I want to exist: Synology packages that just run, cross-platform PowerShell modules, and scripts for the shell.
 
 [![Stars](https://img.shields.io/github/stars/eizedev?affiliations=OWNER&style=for-the-badge&logo=github&label=Stars&labelColor=1f2430&color=e5c07b)](https://github.com/eizedev?tab=repositories)
