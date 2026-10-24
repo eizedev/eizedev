@@ -1,8 +1,8 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="logo/svg/wordmark-on-dark.svg">
-  <img alt="eizedev" src="logo/svg/wordmark-on-light.svg" height="64">
+  <source media="(prefers-color-scheme: dark)" srcset="logo/wordmark-on-dark.svg">
+  <img alt="eizedev" src="logo/wordmark-on-light.svg" height="64">
 </picture>
 
 Hi, I'm René. **Automation, self-hosting & PowerShell on macOS, Linux and Synology.**
