@@ -86,6 +86,7 @@ name = "powershell-universal-components"
 repo = "eizedev/powershell-universal-components"
 icon = "powershell-universal-components/out/icon.svg"
 docs = "https://powershell-universal-components.eize.dev/"
+llms = "https://powershell-universal-components.eize.dev/llms.txt"
 text = "Apache ECharts with 29 chart types, a Perspective datagrid with pivot and WebGL charts, and the pivotkit report builder, each one a module of its own."
 notes = ["PowerShell Gallery"]
 versions = [
