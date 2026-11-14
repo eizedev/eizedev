@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="{{csp}}">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>{{title}}</title>
+<meta name="description" content="{{description}}">
+<link rel="canonical" href="{{url}}/">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#12161f" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="eize.dev">
+<meta property="og:url" content="{{url}}/">
+<meta property="og:title" content="{{title}}">
+<meta property="og:description" content="{{description}}">
+<meta property="og:image" content="{{url}}/social-preview.png">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="640">
+<meta property="og:image:alt" content="{{social_alt}}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{title}}">
+<meta name="twitter:description" content="{{description}}">
+<meta name="twitter:image" content="{{url}}/social-preview.png">
+<meta name="twitter:image:alt" content="{{social_alt}}">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="alternate" type="text/plain" title="For language models" href="/llms.txt">
+<link rel="sitemap" type="application/xml" href="/sitemap.xml">
+<script type="application/ld+json">{{json_ld}}</script>
+<style>{{style}}</style>
+</head>
+<body>
+<header class="bar">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="eize.dev home">{{mark}}eize.dev</a>
+    <nav class="nav" aria-label="Main">
+      <a href="#{{flagship_id}}">{{flagship_name}}</a>
+      <a href="#projects">Projects</a>
+      <a href="{{github}}">GitHub</a>
+    </nav>
+  </div>
+</header>
+<main>
+  <section class="wrap intro">
+    <p class="prompt">{{prompt}}</p>
+    <h1>{{headline}}</h1>
+    <p>{{intro}}</p>
+  </section>
+{{flagship}}
+  <div class="wrap more" id="projects">
+{{groups}}
+  </div>
+{{contributions}}
+</main>
+<footer>
+  <div class="wrap">
+    <span>A static page: no cookies, no tracking, no scripts.</span>
+    <nav aria-label="Footer">
+      <a href="mailto:{{contact}}">{{contact}}</a>
+      <a href="{{github}}">GitHub</a>
+      <a href="{{sponsor}}">Sponsor</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>
