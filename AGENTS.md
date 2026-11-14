@@ -37,3 +37,10 @@ python3 -m http.server -d _site        # look at the page
 - Versions and stars are read from shields.io at build time. A missing value only drops that value
   from the page; a missing icon or screenshot fails the build so a broken page is never published.
 - Public text: no hostnames, addresses or details of my home setup.
+
+## Exceptions to the repository standards
+
+- No CONTRIBUTING.md, CODE_OF_CONDUCT.md, SECURITY.md or CODEOWNERS: a profile, not a product others contribute to.
+- No issue or pull request templates: issues and outside pull requests are not expected here.
+- No CHANGELOG.md: the page and README describe the current state; history is in git.
+- No docs website and no own social preview or brand folder: eize.dev is the page itself and uses the eizedev logo kit from eizedev/brand.
