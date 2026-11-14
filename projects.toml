@@ -1,0 +1,156 @@
+# The one place that lists my projects. site/build.py turns it into the page on eize.dev and into
+# the projects part of README.md (between the "projects" markers). Change this file, then run
+# `uv run site/build.py --readme` and commit both; CI fails when README.md is out of date.
+#
+# Versions and stars are not written here: the page reads them from shields.io when it is built
+# (weekly and on every push), the README shows them as live badges. A `badge` is a shields.io path
+# without the host, e.g. "pypi/v/aiosynologysrm".
+#
+# Icons: `icon` is a path in eizedev/brand (an SVG), `glyph` two letters for projects without one.
+
+[site]
+url = "https://eize.dev"
+title = "eizedev"
+description = "Open-source tools by René (eizedev): pivotkit, Home Assistant integrations, Synology packages and PowerShell Universal components."
+brand = "https://raw.githubusercontent.com/eizedev/brand/main"
+github = "https://github.com/eizedev"
+sponsor = "https://github.com/sponsors/eizedev"
+
+[intro]
+prompt = "~/eizedev"
+headline = "Tools I wanted to exist, built so others can use them too."
+text = "I'm René. I build open-source tools for reports, Home Assistant, Synology and PowerShell: typed, read-only where it matters, documented end to end and tested on real hardware."
+
+[flagship]
+name = "pivotkit"
+repo = "eizedev/pivotkit"
+icon = "pivotkit/out/icon.svg"
+kicker = "Open source · MIT"
+lead = "Excel's PivotTable for web apps and the command line. People load their data, build the report by dragging fields and take it to Excel. The same report renders again in CI, behind a REST service or for an AI client."
+install = "npm install pivotkit-react"
+badge = "npm/v/pivotkit-react"
+packages = ["pivotkit-core", "pivotkit-react", "pivotkit-element", "pivotkit-xlsx", "pivotkit-report", "pivotkit-cli", "pivotkit-server", "pivotkit-mcp"]
+packages_label = "Eight packages on npm, each usable on its own:"
+
+[[flagship.points]]
+title = "Bring your own file."
+text = "CSV, JSON or Excel dropped onto the report, with a preview and a type per column. Nothing is uploaded."
+
+[[flagship.points]]
+title = "Excel with the layout kept,"
+text = "plus the rows behind every number as CSV or JSON."
+
+[[flagship.points]]
+title = "Views are safe JSON"
+text = "with a published schema. A view cannot run code, and the CLI checks it in CI."
+
+[[flagship.points]]
+title = "One report, many places:"
+text = "React, a web component, Node, a command line, a REST service with a container image, and an MCP server that never hands the model the rows."
+
+[[flagship.links]]
+label = "Try the live demo"
+url = "https://pivotkit.eize.dev/playground/"
+primary = true
+
+[[flagship.links]]
+label = "Documentation"
+url = "https://pivotkit.eize.dev/"
+
+[[flagship.links]]
+label = "Compared with others"
+url = "https://pivotkit.eize.dev/compare/"
+
+[flagship.screenshot]
+# Taken from the pivotkit repository when the page is built, so it stays current.
+light = "https://raw.githubusercontent.com/eizedev/pivotkit/main/docs/assets/screenshots/report-light.png"
+dark = "https://raw.githubusercontent.com/eizedev/pivotkit/main/docs/assets/screenshots/report-dark.png"
+alt = "pivotkit report: average temperature of 14 cities by month as a colour scale"
+caption = "The live demo with weather data from Open-Meteo.com (CC BY 4.0)."
+
+[[groups]]
+title = "PowerShell Universal"
+colour = "blue"
+text = "Components for PowerShell Universal apps, fed straight from SQL, REST and PowerShell objects. The pivot module is pivotkit inside PSU."
+
+[[groups.projects]]
+name = "powershell-universal-components"
+repo = "eizedev/powershell-universal-components"
+icon = "powershell-universal-components/out/icon.svg"
+docs = "https://powershell-universal-components.eize.dev/"
+text = "Apache ECharts with 29 chart types, a Perspective datagrid with pivot and WebGL charts, and the pivotkit report builder, each one a module of its own."
+notes = ["PowerShell Gallery"]
+versions = [
+  { label = "ECharts", badge = "powershellgallery/v/PowerShellUniversal.Component.ECharts" },
+  { label = "Perspective", badge = "powershellgallery/v/PowerShellUniversal.Component.Perspective" },
+  { label = "Pivot", badge = "powershellgallery/v/PowerShellUniversal.Component.Pivot" },
+]
+
+[[groups]]
+title = "Home Assistant and the home network"
+colour = "green"
+text = "Integrations for the network gear in many homes, each on its own typed Python library that other projects can use too. Read-only and vendor-neutral where the standards allow it."
+
+[[groups.projects]]
+name = "Synology SRM Router"
+repo = "eizedev/ha-synology-srm-router"
+icon = "aiosynologysrm/out/icon.svg"
+docs = "https://ha-synology-srm-router.eize.dev/"
+text = "Load, traffic, WAN, DHCP, firewall hits and device trackers that know which router, access point and radio a client uses."
+notes = ["in HACS"]
+versions = [{ label = "Release", badge = "github/v/release/eizedev/ha-synology-srm-router" }]
+library = { name = "aiosynologysrm", url = "https://aiosynologysrm.eize.dev/", badge = "pypi/v/aiosynologysrm" }
+
+[[groups.projects]]
+name = "Managed Switch (SNMP)"
+repo = "eizedev/ha-managed-switch"
+icon = "aiosnmpswitch/out/icon.svg"
+docs = "https://ha-managed-switch.eize.dev/"
+text = "Port link, speed, PoE and traffic, which device is on which port across all switches, with a front-panel dashboard card."
+notes = ["HACS custom repository"]
+versions = [{ label = "Release", badge = "github/v/release/eizedev/ha-managed-switch" }]
+library = { name = "aiosnmpswitch", url = "https://aiosnmpswitch.eize.dev/", badge = "pypi/v/aiosnmpswitch" }
+
+[[groups]]
+title = "Synology packages"
+colour = "yellow"
+text = "Packages for Synology NAS and routers that install like any other and start again after a reboot."
+
+[[groups.projects]]
+name = "AirConnect-Synology"
+repo = "eizedev/AirConnect-Synology"
+glyph = "AC"
+text = "AirPlay for the speakers you already own: UPnP/Sonos and Chromecast devices become AirPlay targets."
+notes = ["DSM and SRM"]
+stars = true
+versions = [{ label = "Release", badge = "github/v/release/eizedev/AirConnect-Synology" }]
+downloads = "github/downloads/eizedev/AirConnect-Synology/total"
+
+[[groups.projects]]
+name = "SpotConnect-Synology"
+repo = "eizedev/SpotConnect-Synology"
+glyph = "SC"
+text = "Spotify Connect for UPnP/Sonos and AirPlay speakers. The NAS holds the stream, not your phone."
+notes = ["DSM and SRM"]
+versions = [{ label = "Release", badge = "github/v/release/eizedev/SpotConnect-Synology?include_prereleases" }]
+downloads = "github/downloads/eizedev/SpotConnect-Synology/total"
+
+[[groups]]
+title = "PowerShell"
+colour = "blue"
+text = "Cross-platform modules for the shell."
+
+[[groups.projects]]
+name = "PSItems"
+repo = "eizedev/PSItems"
+glyph = "PS"
+text = "find, grep and du the PowerShell way: a fast, cross-platform module for files, folders, content and sizes."
+notes = ["Linux, macOS, Windows"]
+versions = [{ label = "Gallery", badge = "powershellgallery/v/PSItems" }]
+downloads = "powershellgallery/dt/PSItems"
+
+[[contributions]]
+name = "PasswordState-Management"
+repo = "dnewsholme/PasswordState-Management"
+text = "PowerShell module for the Passwordstate password manager. Second-largest contributor: permission and report functions, self-destruct messages, and compatibility with Passwordstate v9."
+downloads = "powershellgallery/dt/Passwordstate-Management"
