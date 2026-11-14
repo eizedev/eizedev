@@ -15,6 +15,11 @@ description = "Open-source tools by René (eizedev): pivotkit, Home Assistant in
 brand = "https://raw.githubusercontent.com/eizedev/brand/main"
 github = "https://github.com/eizedev"
 sponsor = "https://github.com/sponsors/eizedev"
+author = "René"
+# The one public contact address, a forward (as in the other projects); security reports go through
+# GitHub's private reporting of each repository.
+contact = "oss@eize.dev"
+social_alt = "The eizedev logo: a green prompt chevron, a blue e and a yellow cursor"
 
 [intro]
 prompt = "~/eizedev"
@@ -26,6 +31,9 @@ name = "pivotkit"
 repo = "eizedev/pivotkit"
 icon = "pivotkit/out/icon.svg"
 kicker = "Open source · MIT"
+docs = "https://pivotkit.eize.dev/"
+# Docs sites with an llms.txt get it linked from eize.dev/llms.txt, so agents find the full docs.
+llms = "https://pivotkit.eize.dev/llms.txt"
 lead = "Excel's PivotTable for web apps and the command line. People load their data, build the report by dragging fields and take it to Excel. The same report renders again in CI, behind a REST service or for an AI client."
 install = "npm install pivotkit-react"
 badge = "npm/v/pivotkit-react"

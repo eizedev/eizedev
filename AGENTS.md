@@ -9,6 +9,8 @@ the landing page on [eize.dev](https://eize.dev), published with GitHub Pages.
   The page and the projects part of `README.md` are generated from it.
 - `site/build.py` - the generator (Python, run with uv; its dependencies are declared inline).
 - `site/page.html`, `site/style.css` - page shell and styles. The CSS is inlined into the page.
+- Besides `index.html` the build writes `llms.txt` (for language models), `sitemap.xml`, `robots.txt`,
+  the favicons and the social preview; the page carries schema.org data (JSON-LD) and Open Graph tags.
 - `README.md` - hand-written header and gists; everything between `<!-- projects:start ... -->` and
   `<!-- projects:end -->` is generated.
 - `logo/` - the two wordmarks the README shows. The logo kit, project icons and favicons live in

@@ -261,10 +261,13 @@ class Page:
             "url": esc(site["url"]),
             "github": esc(site["github"]),
             "sponsor": esc(site["sponsor"]),
+            "contact": esc(site["contact"]),
             "mark": mark,
             "prompt": esc(intro["prompt"]),
             "headline": esc(intro["headline"]),
             "intro": esc(intro["text"]),
+            "social_alt": esc(site["social_alt"]),
+            "json_ld": json_ld(self.config),
             "flagship_id": esc(self.config["flagship"]["name"]),
             "flagship_name": esc(self.config["flagship"]["name"]),
             "flagship": self.flagship(),
@@ -274,9 +277,91 @@ class Page:
         page = (SITE / "page.html").read_text()
         page = re.sub(r"\{\{(\w+)\}\}", lambda m: values[m.group(1)], page)
         (self.out / "index.html").write_text(page)
-        (self.out / "robots.txt").write_text("User-agent: *\nAllow: /\n")
+        (self.out / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {site['url']}/sitemap.xml\n")
+        (self.out / "sitemap.xml").write_text(sitemap(site["url"]))
+        (self.out / "llms.txt").write_text(llms_txt(self.config))
         size = sum(p.stat().st_size for p in self.out.rglob("*") if p.is_file())
         print(f"built {self.out} ({len(page.encode()) // 1024} KiB page, {size // 1024} KiB in total)")
+
+
+# ----------------------------------------------------------------- for search engines and agents
+
+
+def all_projects(config: dict) -> list[dict]:
+    """The flagship and every project of every group, in page order."""
+    return [config["flagship"]] + [p for g in config["groups"] for p in g["projects"]]
+
+
+def project_url(project: dict) -> str:
+    return project.get("docs") or github_url(project["repo"])
+
+
+def sitemap(url: str) -> str:
+    return (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        f"  <url><loc>{esc(url)}/</loc></url>\n"
+        "</urlset>\n"
+    )
+
+
+def llms_txt(config: dict) -> str:
+    """eize.dev for language models (https://llmstxt.org): what is here and where the docs are."""
+    site, f = config["site"], config["flagship"]
+    lines = [
+        f"# {site['title']}",
+        "",
+        f"> {site['description']}",
+        "",
+        f"{config['intro']['text']} Source code: {site['github']}. Contact: {site['contact']}.",
+        "",
+        "## Main project",
+        "",
+        f"- [{f['name']}]({f['docs']}): {f['lead']}",
+    ]
+    if "llms" in f:
+        lines.append(f"- [{f['name']} documentation for language models]({f['llms']}): every page of the docs")
+    for group in config["groups"]:
+        lines += ["", f"## {group['title']}", ""]
+        for p in group["projects"]:
+            lines.append(f"- [{p['name']}]({project_url(p)}): {p['text']} Code: {github_url(p['repo'])}")
+            if lib := p.get("library"):
+                lines.append(f"- [{lib['name']}]({lib['url']}): the Python library behind {p['name']}.")
+            if "llms" in p:
+                lines.append(f"- [{p['name']} documentation for language models]({p['llms']})")
+    if config.get("contributions"):
+        lines += ["", "## Optional", ""]
+        lines += [f"- [{c['name']}]({github_url(c['repo'])}): {c['text']}" for c in config["contributions"]]
+    return "\n".join(lines) + "\n"
+
+
+def json_ld(config: dict) -> str:
+    """schema.org data for search engines: the person and the projects. A data block, never run,
+    so the Content-Security-Policy (no scripts) does not affect it."""
+    site = config["site"]
+    person = {
+        "@type": "Person",
+        "@id": f"{site['url']}/#me",
+        "name": site["author"],
+        "alternateName": site["title"],
+        "email": f"mailto:{site['contact']}",
+        "url": f"{site['url']}/",
+        "sameAs": [site["github"]],
+    }
+    projects = [
+        {
+            "@type": "SoftwareSourceCode",
+            "name": p["name"],
+            "description": p.get("lead") or p["text"],
+            "url": project_url(p),
+            "codeRepository": github_url(p["repo"]),
+            "author": {"@id": person["@id"]},
+        }
+        for p in all_projects(config)
+    ]
+    data = {"@context": "https://schema.org", "@graph": [person, *projects]}
+    # "</" must not appear inside a script element
+    return json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
 
 
 # -------------------------------------------------------------------------------------- README
